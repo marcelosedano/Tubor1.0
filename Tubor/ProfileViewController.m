@@ -28,6 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // Light status bar
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
     // Customize view controller depending on source view controller
     if ([self.previousVC isEqualToString:@"Login"])
     {
@@ -48,7 +51,12 @@
     
     // Set navigation bar color
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x000000);
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tuborNavTitle.png"]];
+    UIImageView *navigationImage =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 76, 25)];
+    navigationImage.image=[UIImage imageNamed:@"tNavTitle.png"];
+    
+    UIImageView *workaroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 76, 25)];
+    [workaroundImageView addSubview:navigationImage];
+    self.navigationItem.titleView = workaroundImageView;
     
     // Table section title font size
     [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont boldSystemFontOfSize:12]];
@@ -94,6 +102,28 @@
     [push setMessage:message];
     [push sendPushInBackground];
     
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@"Are you sure you want to send a request?"
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"Send tutor request", nil];
+    [actionSheet showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) // User select "Yes" from action sheet
+    {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:[NSString stringWithFormat: @"Tutor request sent!"]
+                              message:[NSString stringWithFormat: @"\nYou have requested help from %@.  They will be expecting you at %@.", self.user[@"firstName"], self.user[@"location"]]
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+    }
+>>>>>>> marcelo-dev
 }
 
 // Edit mode
@@ -168,11 +198,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - Table View Methods

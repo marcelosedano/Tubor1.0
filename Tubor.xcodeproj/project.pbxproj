@@ -40,14 +40,14 @@
 		0E4A13371ABDF20600C20D71 /* TuborTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A13361ABDF20600C20D71 /* TuborTests.m */; };
 		0E4C6E6B1AEC0B7A00B6DFBB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4C6E6A1AEC0B7A00B6DFBB /* MapKit.framework */; };
 		0E4C6E781AEC365A00B6DFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C6E771AEC365A00B6DFBB /* Main.storyboard */; };
-		0E4C6E7D1AEC4A0900B6DFBB /* tuborappicon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C6E7B1AEC4A0900B6DFBB /* tuborappicon2x.png */; };
-		0E4C6E7E1AEC4A0900B6DFBB /* tuborappicon3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C6E7C1AEC4A0900B6DFBB /* tuborappicon3x.png */; };
 		0E4D33DC1ACD08C4001C5416 /* CustomProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E4D33DB1ACD08C4001C5416 /* CustomProfileCell.xib */; };
 		0E4D33DF1ACD0996001C5416 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D33DE1ACD0996001C5416 /* ProfileTableViewCell.m */; };
 		0E4D33E21ACD0BC7001C5416 /* AddCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D33E11ACD0BC7001C5416 /* AddCourseViewController.m */; };
-		0E4D33E61ACD2C27001C5416 /* tuborNavTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4D33E51ACD2C27001C5416 /* tuborNavTitle.png */; };
 		0E4D33E81ACD2DA5001C5416 /* studentImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4D33E71ACD2DA5001C5416 /* studentImage.png */; };
 		0E4D33EA1ACDB884001C5416 /* profileTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4D33E91ACDB884001C5416 /* profileTabIcon.png */; };
+		0E4DF8911AEF717E0067312E /* tappicon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4DF88F1AEF717E0067312E /* tappicon2x.png */; };
+		0E4DF8921AEF717E0067312E /* tappicon3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4DF8901AEF717E0067312E /* tappicon3x.png */; };
+		0E4DF8941AEF73050067312E /* tNavTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4DF8931AEF73050067312E /* tNavTitle.png */; };
 		0E4F91361AC70CA40014209A /* TuborRegistrationBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4F91351AC70CA40014209A /* TuborRegistrationBackground.png */; };
 		0EE2B8C91AC5D0D400D4B000 /* defaultUserPic_small.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0EE2B8C81AC5D0D400D4B000 /* defaultUserPic_small.jpeg */; };
 		0EE2B8CB1AC5E13C00D4B000 /* TuborLoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE2B8CA1AC5E13C00D4B000 /* TuborLoginBackground.png */; };
@@ -108,16 +108,16 @@
 		0E4A13361ABDF20600C20D71 /* TuborTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TuborTests.m; sourceTree = "<group>"; };
 		0E4C6E6A1AEC0B7A00B6DFBB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0E4C6E771AEC365A00B6DFBB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0E4C6E7B1AEC4A0900B6DFBB /* tuborappicon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tuborappicon2x.png; sourceTree = "<group>"; };
-		0E4C6E7C1AEC4A0900B6DFBB /* tuborappicon3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tuborappicon3x.png; sourceTree = "<group>"; };
 		0E4D33DB1ACD08C4001C5416 /* CustomProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomProfileCell.xib; sourceTree = "<group>"; };
 		0E4D33DD1ACD0996001C5416 /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		0E4D33DE1ACD0996001C5416 /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
 		0E4D33E01ACD0BC7001C5416 /* AddCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseViewController.h; sourceTree = "<group>"; };
 		0E4D33E11ACD0BC7001C5416 /* AddCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCourseViewController.m; sourceTree = "<group>"; };
-		0E4D33E51ACD2C27001C5416 /* tuborNavTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tuborNavTitle.png; sourceTree = "<group>"; };
 		0E4D33E71ACD2DA5001C5416 /* studentImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = studentImage.png; sourceTree = "<group>"; };
 		0E4D33E91ACDB884001C5416 /* profileTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileTabIcon.png; sourceTree = "<group>"; };
+		0E4DF88F1AEF717E0067312E /* tappicon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tappicon2x.png; sourceTree = "<group>"; };
+		0E4DF8901AEF717E0067312E /* tappicon3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tappicon3x.png; sourceTree = "<group>"; };
+		0E4DF8931AEF73050067312E /* tNavTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tNavTitle.png; sourceTree = "<group>"; };
 		0E4F91351AC70CA40014209A /* TuborRegistrationBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TuborRegistrationBackground.png; sourceTree = "<group>"; };
 		0EE2B8C81AC5D0D400D4B000 /* defaultUserPic_small.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultUserPic_small.jpeg; sourceTree = "<group>"; };
 		0EE2B8CA1AC5E13C00D4B000 /* TuborLoginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TuborLoginBackground.png; sourceTree = "<group>"; };
@@ -252,15 +252,15 @@
 		0E4A131A1ABDF20600C20D71 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0E4C6E7B1AEC4A0900B6DFBB /* tuborappicon2x.png */,
-				0E4C6E7C1AEC4A0900B6DFBB /* tuborappicon3x.png */,
+				0E4DF88F1AEF717E0067312E /* tappicon2x.png */,
+				0E4DF8931AEF73050067312E /* tNavTitle.png */,
+				0E4DF8901AEF717E0067312E /* tappicon3x.png */,
 				0E442E251ACE6C53002C7DB7 /* whiteLogout.png */,
 				0E442E211ACE25A8002C7DB7 /* tutorTabIcon.png */,
 				0E442E231ACE6BEB002C7DB7 /* logoutButton.png */,
 				0E442E1F1ACE255E002C7DB7 /* requestTabIcon.png */,
 				0E4D33E91ACDB884001C5416 /* profileTabIcon.png */,
 				0E4D33E71ACD2DA5001C5416 /* studentImage.png */,
-				0E4D33E51ACD2C27001C5416 /* tuborNavTitle.png */,
 				0E4998881ACB326D000D0A41 /* TuborProfileBackground.png */,
 				0E4F91351AC70CA40014209A /* TuborRegistrationBackground.png */,
 				0EE2B8CA1AC5E13C00D4B000 /* TuborLoginBackground.png */,
@@ -371,18 +371,18 @@
 			files = (
 				0E442E241ACE6BEB002C7DB7 /* logoutButton.png in Resources */,
 				0E442E221ACE25A8002C7DB7 /* tutorTabIcon.png in Resources */,
+				0E4DF8941AEF73050067312E /* tNavTitle.png in Resources */,
 				0E442E261ACE6C53002C7DB7 /* whiteLogout.png in Resources */,
-				0E4C6E7E1AEC4A0900B6DFBB /* tuborappicon3x.png in Resources */,
 				0E442E201ACE255E002C7DB7 /* requestTabIcon.png in Resources */,
 				0E4998891ACB326D000D0A41 /* TuborProfileBackground.png in Resources */,
 				0E4D33DC1ACD08C4001C5416 /* CustomProfileCell.xib in Resources */,
-				0E4D33E61ACD2C27001C5416 /* tuborNavTitle.png in Resources */,
 				0E4D33EA1ACDB884001C5416 /* profileTabIcon.png in Resources */,
-				0E4C6E7D1AEC4A0900B6DFBB /* tuborappicon2x.png in Resources */,
 				0EE2B8C91AC5D0D400D4B000 /* defaultUserPic_small.jpeg in Resources */,
+				0E4DF8911AEF717E0067312E /* tappicon2x.png in Resources */,
 				0E4D33E81ACD2DA5001C5416 /* studentImage.png in Resources */,
 				0E4A132B1ABDF20600C20D71 /* LaunchScreen.xib in Resources */,
 				0E4A13281ABDF20600C20D71 /* Images.xcassets in Resources */,
+				0E4DF8921AEF717E0067312E /* tappicon3x.png in Resources */,
 				0E4C6E781AEC365A00B6DFBB /* Main.storyboard in Resources */,
 				0EE2B8CB1AC5E13C00D4B000 /* TuborLoginBackground.png in Resources */,
 				0E4F91361AC70CA40014209A /* TuborRegistrationBackground.png in Resources */,

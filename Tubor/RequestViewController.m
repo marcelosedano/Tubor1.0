@@ -22,13 +22,21 @@ PFUser *selectedTutor;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Light status bar
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
         
     // Set the property for the current user
     self.user = [PFUser currentUser];
     
     // Navigation bar GUI
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x000000);
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tuborNavTitle.png"]];
+    UIImageView *navigationImage =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 76, 25)];
+    navigationImage.image=[UIImage imageNamed:@"tNavTitle.png"];
+    
+    UIImageView *workaroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 76, 25)];
+    [workaroundImageView addSubview:navigationImage];
+    self.navigationItem.titleView = workaroundImageView;
     
     // Location manager and map authorization code
     self.locationManager = [[CLLocationManager alloc] init];

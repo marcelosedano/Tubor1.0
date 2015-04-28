@@ -20,6 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // Light status bar
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
     self.user = [PFUser currentUser];
     
     // Set up location manager to get user location
@@ -42,7 +45,12 @@
     [self.user saveInBackground];
     
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x000000);
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tuborNavTitle.png"]];
+    UIImageView *navigationImage =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 76, 25)];
+    navigationImage.image=[UIImage imageNamed:@"tNavTitle.png"];
+    
+    UIImageView *workaroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 76, 25)];
+    [workaroundImageView addSubview:navigationImage];
+    self.navigationItem.titleView = workaroundImageView;
 }
 
 // Hide keyboard when user taps outside of keyboard area
