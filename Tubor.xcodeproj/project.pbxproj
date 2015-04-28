@@ -35,10 +35,13 @@
 		0E4998891ACB326D000D0A41 /* TuborProfileBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4998881ACB326D000D0A41 /* TuborProfileBackground.png */; };
 		0E4A131D1ABDF20600C20D71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A131C1ABDF20600C20D71 /* main.m */; };
 		0E4A13201ABDF20600C20D71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A131F1ABDF20600C20D71 /* AppDelegate.m */; };
-		0E4A13261ABDF20600C20D71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E4A13241ABDF20600C20D71 /* Main.storyboard */; };
 		0E4A13281ABDF20600C20D71 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E4A13271ABDF20600C20D71 /* Images.xcassets */; };
 		0E4A132B1ABDF20600C20D71 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E4A13291ABDF20600C20D71 /* LaunchScreen.xib */; };
 		0E4A13371ABDF20600C20D71 /* TuborTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A13361ABDF20600C20D71 /* TuborTests.m */; };
+		0E4C6E6B1AEC0B7A00B6DFBB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4C6E6A1AEC0B7A00B6DFBB /* MapKit.framework */; };
+		0E4C6E781AEC365A00B6DFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C6E771AEC365A00B6DFBB /* Main.storyboard */; };
+		0E4C6E7D1AEC4A0900B6DFBB /* tuborappicon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C6E7B1AEC4A0900B6DFBB /* tuborappicon2x.png */; };
+		0E4C6E7E1AEC4A0900B6DFBB /* tuborappicon3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C6E7C1AEC4A0900B6DFBB /* tuborappicon3x.png */; };
 		0E4D33DC1ACD08C4001C5416 /* CustomProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E4D33DB1ACD08C4001C5416 /* CustomProfileCell.xib */; };
 		0E4D33DF1ACD0996001C5416 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D33DE1ACD0996001C5416 /* ProfileTableViewCell.m */; };
 		0E4D33E21ACD0BC7001C5416 /* AddCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D33E11ACD0BC7001C5416 /* AddCourseViewController.m */; };
@@ -98,12 +101,15 @@
 		0E4A131C1ABDF20600C20D71 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0E4A131E1ABDF20600C20D71 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0E4A131F1ABDF20600C20D71 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0E4A13251ABDF20600C20D71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E4A13271ABDF20600C20D71 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0E4A132A1ABDF20600C20D71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0E4A13301ABDF20600C20D71 /* TuborTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TuborTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E4A13351ABDF20600C20D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E4A13361ABDF20600C20D71 /* TuborTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TuborTests.m; sourceTree = "<group>"; };
+		0E4C6E6A1AEC0B7A00B6DFBB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0E4C6E771AEC365A00B6DFBB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0E4C6E7B1AEC4A0900B6DFBB /* tuborappicon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tuborappicon2x.png; sourceTree = "<group>"; };
+		0E4C6E7C1AEC4A0900B6DFBB /* tuborappicon3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tuborappicon3x.png; sourceTree = "<group>"; };
 		0E4D33DB1ACD08C4001C5416 /* CustomProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomProfileCell.xib; sourceTree = "<group>"; };
 		0E4D33DD1ACD0996001C5416 /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		0E4D33DE1ACD0996001C5416 /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
@@ -124,6 +130,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E4C6E6B1AEC0B7A00B6DFBB /* MapKit.framework in Frameworks */,
+				0E25B82D1AC20D8D00B45EFB /* CoreLocation.framework in Frameworks */,
 				0E25B83B1AC20DCC00B45EFB /* libsqlite3.dylib in Frameworks */,
 				0E25B8391AC20DC300B45EFB /* libz.dylib in Frameworks */,
 				0E25B8371AC20DB600B45EFB /* SystemConfiguration.framework in Frameworks */,
@@ -131,7 +139,6 @@
 				0E25B8331AC20DA400B45EFB /* Security.framework in Frameworks */,
 				0E25B8311AC20D9E00B45EFB /* QuartzCore.framework in Frameworks */,
 				0E25B82F1AC20D9900B45EFB /* MobileCoreServices.framework in Frameworks */,
-				0E25B82D1AC20D8D00B45EFB /* CoreLocation.framework in Frameworks */,
 				0E25B82B1AC20D8600B45EFB /* CoreGraphics.framework in Frameworks */,
 				0E25B8291AC20D7D00B45EFB /* CFNetwork.framework in Frameworks */,
 				0E25B8271AC20D7600B45EFB /* AudioToolbox.framework in Frameworks */,
@@ -162,10 +169,10 @@
 				0E25B80F1AC207FD00B45EFB /* ProfileViewController.m */,
 				0E25B80B1AC2067600B45EFB /* RegistrationViewController.h */,
 				0E25B80C1AC2067600B45EFB /* RegistrationViewController.m */,
-				0E150C011ACE226600A3A31D /* RequestViewController.h */,
-				0E150C021ACE226600A3A31D /* RequestViewController.m */,
 				0E4D33E01ACD0BC7001C5416 /* AddCourseViewController.h */,
 				0E4D33E11ACD0BC7001C5416 /* AddCourseViewController.m */,
+				0E150C011ACE226600A3A31D /* RequestViewController.h */,
+				0E150C021ACE226600A3A31D /* RequestViewController.m */,
 				0E150C041ACE227500A3A31D /* TutorViewController.h */,
 				0E150C051ACE227500A3A31D /* TutorViewController.m */,
 			);
@@ -207,6 +214,7 @@
 		0E4A130E1ABDF20600C20D71 = {
 			isa = PBXGroup;
 			children = (
+				0E4C6E6A1AEC0B7A00B6DFBB /* MapKit.framework */,
 				0E4A13191ABDF20600C20D71 /* Tubor */,
 				0E4A13331ABDF20600C20D71 /* TuborTests */,
 				0E4A13181ABDF20600C20D71 /* Products */,
@@ -233,9 +241,9 @@
 				0E4D33DE1ACD0996001C5416 /* ProfileTableViewCell.m */,
 				0E25B80A1AC2057A00B45EFB /* View Controllers */,
 				0E4998871ACB15F5000D0A41 /* Models */,
-				0E4A13241ABDF20600C20D71 /* Main.storyboard */,
 				0E4A13271ABDF20600C20D71 /* Images.xcassets */,
 				0E4A13291ABDF20600C20D71 /* LaunchScreen.xib */,
+				0E4C6E771AEC365A00B6DFBB /* Main.storyboard */,
 				0E4A131A1ABDF20600C20D71 /* Supporting Files */,
 			);
 			path = Tubor;
@@ -244,6 +252,8 @@
 		0E4A131A1ABDF20600C20D71 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0E4C6E7B1AEC4A0900B6DFBB /* tuborappicon2x.png */,
+				0E4C6E7C1AEC4A0900B6DFBB /* tuborappicon3x.png */,
 				0E442E251ACE6C53002C7DB7 /* whiteLogout.png */,
 				0E442E211ACE25A8002C7DB7 /* tutorTabIcon.png */,
 				0E442E231ACE6BEB002C7DB7 /* logoutButton.png */,
@@ -362,16 +372,18 @@
 				0E442E241ACE6BEB002C7DB7 /* logoutButton.png in Resources */,
 				0E442E221ACE25A8002C7DB7 /* tutorTabIcon.png in Resources */,
 				0E442E261ACE6C53002C7DB7 /* whiteLogout.png in Resources */,
-				0E4A13261ABDF20600C20D71 /* Main.storyboard in Resources */,
+				0E4C6E7E1AEC4A0900B6DFBB /* tuborappicon3x.png in Resources */,
 				0E442E201ACE255E002C7DB7 /* requestTabIcon.png in Resources */,
 				0E4998891ACB326D000D0A41 /* TuborProfileBackground.png in Resources */,
 				0E4D33DC1ACD08C4001C5416 /* CustomProfileCell.xib in Resources */,
 				0E4D33E61ACD2C27001C5416 /* tuborNavTitle.png in Resources */,
 				0E4D33EA1ACDB884001C5416 /* profileTabIcon.png in Resources */,
+				0E4C6E7D1AEC4A0900B6DFBB /* tuborappicon2x.png in Resources */,
 				0EE2B8C91AC5D0D400D4B000 /* defaultUserPic_small.jpeg in Resources */,
 				0E4D33E81ACD2DA5001C5416 /* studentImage.png in Resources */,
 				0E4A132B1ABDF20600C20D71 /* LaunchScreen.xib in Resources */,
 				0E4A13281ABDF20600C20D71 /* Images.xcassets in Resources */,
+				0E4C6E781AEC365A00B6DFBB /* Main.storyboard in Resources */,
 				0EE2B8CB1AC5E13C00D4B000 /* TuborLoginBackground.png in Resources */,
 				0E4F91361AC70CA40014209A /* TuborRegistrationBackground.png in Resources */,
 			);
@@ -423,14 +435,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0E4A13241ABDF20600C20D71 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0E4A13251ABDF20600C20D71 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0E4A13291ABDF20600C20D71 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

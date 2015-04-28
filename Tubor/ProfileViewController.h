@@ -13,6 +13,6 @@
 @interface ProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) PFUser * user;
-@property (nonatomic) UIBarButtonItem * editButton;
+@property (nonatomic) NSString * previousVC;
 
 @end

@@ -22,6 +22,13 @@
     
     self.user = [PFUser currentUser];
     
+    // Set up location manager to get user location
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
+    
     if ([self.user[@"isAvailable"]  isEqual: @NO]) {
         [self.availability setOn:NO];
     }
@@ -38,10 +45,25 @@
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tuborNavTitle.png"]];
 }
 
+// Hide keyboard when user taps outside of keyboard area
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
 -(void)refreshTable
 {
     [self.requestTable reloadData];
 
+}
+
+// Limit number of characters in location text field (so annotations aren't insanely long)
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range                          withString:string];
+    return !([newString length] > 20);
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +88,14 @@
 
     if (self.availability.isOn)
     {
+        
+        // Set user's current location on Parse
+        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+            if (!error) {
+                self.user[@"currentLocation"] = geoPoint;
+            }
+        }];
+        
         
         NSString * location = [NSString stringWithString:self.locationText.text];
         //NSString * timeAvailable = [NSString stringWithString:self.availabilityText.text];

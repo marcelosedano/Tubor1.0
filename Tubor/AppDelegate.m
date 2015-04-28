@@ -35,6 +35,7 @@
     // Set tab bar color
     [[UITabBar appearance] setBarTintColor:UIColorFromRGB(0x000000)];
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     return YES;
 }

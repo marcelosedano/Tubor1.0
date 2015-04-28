@@ -28,14 +28,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // Customize view controller depending on source view controller
+    if ([self.previousVC isEqualToString:@"Login"])
+    {
+        UIBarButtonItem * editButton = [self editButtonItem];
+        editButton.tintColor = [UIColor whiteColor]; // Color of "Edit" button
+        self.navigationItem.leftBarButtonItem = editButton; // Change left bar button to "Edit" button
+    }
+    else if ([self.previousVC isEqualToString:@"Request"])
+    {
+        // Add "Request Tutor" button on navigation bar
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Request" style:UIBarButtonItemStylePlain target:self action:@selector(requestTutor)];
+        self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor]; // Color of button
+    }
+    
     self.userFullName.text = [NSString stringWithFormat:@"%@ %@",self.user[@"firstName"], self.user[@"lastName"]];
     self.phoneNumber.text = self.user[@"phoneNumber"];
     self.biography.text = self.user[@"bio"];
     
     // Set navigation bar color
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x000000);
-    self.navigationItem.leftBarButtonItem = self.editButton; // Change left bar button to "Edit" button
-    self.editButton.tintColor = [UIColor whiteColor]; // Color of "Edit" button
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tuborNavTitle.png"]];
     
     // Table section title font size
@@ -54,6 +66,17 @@
 -(void)segueToAddCourses
 {
     [self performSegueWithIdentifier:@"addCoursesSegue" sender:self];
+}
+
+-(void)requestTutor
+{
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:[NSString stringWithFormat: @"You have requested help from %@", self.user[@"firstName"]]
+                          message:[NSString stringWithFormat: @"\nThey will be expecting you at %@.", self.user[@"location"]]
+                          delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    [alert show];
 }
 
 // Edit mode

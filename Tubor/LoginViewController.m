@@ -91,7 +91,7 @@
 
         //if you need to pass data to the next controller do it here
         userProfileViewController.user = [PFUser currentUser];
-        userProfileViewController.editButton = [userProfileViewController editButtonItem];
+        userProfileViewController.previousVC = @"Login";
     }
 }
 

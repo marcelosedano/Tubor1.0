@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zTH-7V-5if">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zTH-7V-5if">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -617,18 +617,6 @@
                                     <outlet property="delegate" destination="wO8-xl-tqc" id="BKl-2m-Q8u"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNX-DB-PDB">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" image="whiteLogout.png">
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-11" y="91" width="85" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="logOut:" destination="wO8-xl-tqc" eventType="touchUpInside" id="OAY-ad-u2R"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="studentImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vjc-hm-kLk">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
@@ -652,7 +640,7 @@
                                 </variation>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="3o4-cA-CzC" secondAttribute="centerX" id="D0L-MM-kvF"/>
                             <constraint firstAttribute="centerX" secondItem="8nD-tr-n5X" secondAttribute="centerX" id="PCy-ta-Tjk"/>
@@ -672,7 +660,6 @@
                                 <exclude reference="8nD-tr-n5X"/>
                                 <exclude reference="Phv-2Y-qOM"/>
                                 <exclude reference="3o4-cA-CzC"/>
-                                <exclude reference="tNX-DB-PDB"/>
                                 <exclude reference="Vjc-hm-kLk"/>
                             </mask>
                             <mask key="constraints">
@@ -700,7 +687,6 @@
                                 <include reference="0xA-Hn-5y5"/>
                                 <include reference="8nD-tr-n5X"/>
                                 <include reference="Phv-2Y-qOM"/>
-                                <include reference="tNX-DB-PDB"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="gqO-Z6-hIm"/>
@@ -873,95 +859,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Tutors:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0y-Hh-pFn">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="140" y="325" width="121" height="21"/>
-                                </variation>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QAw-an-uhS">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="137" y="269" width="126" height="21"/>
+                                    <rect key="frame" x="0.0" y="64" width="400" height="687"/>
                                 </variation>
-                            </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xZ-5H-txv">
-                                <rect key="frame" x="0.0" y="-162" width="320" height="162"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="122" width="400" height="162"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="109" width="400" height="162"/>
-                                </variation>
-                                <connections>
-                                    <outlet property="dataSource" destination="b0O-jA-PBU" id="Vmi-3v-kXg"/>
-                                    <outlet property="delegate" destination="b0O-jA-PBU" id="zOe-sg-v7T"/>
-                                </connections>
-                            </pickerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZBM-fd-Riv">
+                            </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IIc-de-kmD">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="3" y="354" width="395" height="232"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="298" width="395" height="232"/>
+                                    <rect key="frame" x="81" y="96" width="238" height="40"/>
                                 </variation>
                                 <connections>
-                                    <outlet property="dataSource" destination="b0O-jA-PBU" id="KIh-Qx-yX6"/>
-                                    <outlet property="delegate" destination="b0O-jA-PBU" id="6qK-Pk-OJg"/>
+                                    <outlet property="dataSource" destination="b0O-jA-PBU" id="oEg-YZ-nb3"/>
+                                    <outlet property="delegate" destination="b0O-jA-PBU" id="75M-HL-sXo"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zS-24-ePD">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Request Tutor">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="152" y="532" width="96" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="requestTutor:" destination="b0O-jA-PBU" eventType="touchUpInside" id="0nX-qL-MJ1"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select course for tutoring:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gH-sI-bkU">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="101" y="93" width="199" height="21"/>
-                                </variation>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="R0y-Hh-pFn"/>
-                                <exclude reference="4xZ-5H-txv"/>
-                                <exclude reference="ZBM-fd-Riv"/>
-                                <exclude reference="2zS-24-ePD"/>
-                                <exclude reference="6gH-sI-bkU"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="R0y-Hh-pFn"/>
-                                <include reference="4xZ-5H-txv"/>
-                                <include reference="ZBM-fd-Riv"/>
+                                <exclude reference="QAw-an-uhS"/>
+                                <exclude reference="IIc-de-kmD"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="2zS-24-ePD"/>
-                                <include reference="6gH-sI-bkU"/>
+                                <include reference="QAw-an-uhS"/>
+                                <include reference="IIc-de-kmD"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="9sc-rq-j6A"/>
                     <connections>
-                        <outlet property="availableTutors" destination="ZBM-fd-Riv" id="kC0-Wo-oXd"/>
-                        <outlet property="chooseClass" destination="4xZ-5H-txv" id="2uK-0b-LeG"/>
+                        <outlet property="courseSelectionTable" destination="IIc-de-kmD" id="6Pt-O5-Hac"/>
+                        <outlet property="mapView" destination="QAw-an-uhS" id="3ig-Pj-qKE"/>
                         <segue destination="wO8-xl-tqc" kind="show" identifier="showTutorSegue" id="a4B-dh-Ldy"/>
                     </connections>
                 </viewController>
@@ -1052,13 +985,16 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QP0-TR-D4a">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="199" y="119" width="123" height="30"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="200" y="118" width="124" height="30"/>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="8rZ-Yu-pmi" id="bZg-tH-DdF"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1144,7 +1080,6 @@
         <image name="requestTabIcon.png" width="30" height="30"/>
         <image name="studentImage.png" width="280" height="280"/>
         <image name="tutorTabIcon.png" width="29" height="30"/>
-        <image name="whiteLogout.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="a4B-dh-Ldy"/>

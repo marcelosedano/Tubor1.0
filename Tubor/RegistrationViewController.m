@@ -58,6 +58,12 @@
     return UIStatusBarStyleLightContent;
 }
 
+// Hide keyboard when user taps outside of keyboard area
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -126,7 +132,7 @@
 
 - (IBAction)register:(id)sender {
     
-    // [self performSegueWithIdentifier:@"registrationToProfileSegue" sender:self];
+    //[self performSegueWithIdentifier:@"registrationToProfileSegue" sender:self];
     
     
     // Dictionary of all text entries from registration fields

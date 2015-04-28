@@ -7,159 +7,220 @@
 //
 
 #import "RequestViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface RequestViewController () 
-- (IBAction)requestTutor:(id)sender;
 
 @end
 
 @implementation RequestViewController
 
-- (void)viewDidLoad {
+PFUser *selectedTutor;
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+        
     // Set the property for the current user
     self.user = [PFUser currentUser];
-    self.courses = self.user[@"coursesTaking"];
     
+    // Navigation bar GUI
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x000000);
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tuborNavTitle.png"]];
     
+    // Location manager and map authorization code
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
+    self.mapView.showsUserLocation=YES;
+    self.mapView.delegate = self;
+    
+    // Set mapview region (ASU campus)
+    MKCoordinateRegion region;
+    region.center.latitude = 33.419834;
+    region.center.longitude = -111.932500;
+    region.span.latitudeDelta = 0.005;
+    region.span.longitudeDelta = 0.005;
+    
+    [self.mapView setRegion:region animated:YES];
+    
+    // Table view instantiation (drop down menu)
+    
+    self.courseSelectionTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    // Rounded corners for drop down menu
+    self.courseSelectionTable.layer.cornerRadius = 5;
+    
+    // Initially, the isShowingList value will be set to NO.
+    // We don't want the list to be dislplayed when the view loads.
+    self.isShowingList = NO;
+    
+    // By default, when the view loads, the first value of the five we created
+    // above will be set as selected.
+    // We'll do that by pointing to the first index of the array.
+    // Don't forget that for the five items of the array, the indexes are from
+    // zero to four (0 - 4).
+    self.selectedValueIndex = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.coursesArray = [[NSMutableArray alloc] init];
+    [self.coursesArray addObject:@"Select Course"];
+    [self.coursesArray addObjectsFromArray:self.user[@"coursesTaking"]];
+    
     // Hide navigation bar
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+#pragma mark - Drop Down Table Methods
+
+// Customize the number of sections in the table view.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // We are going to have only three sections in this example.
     return 1;
 }
 
--(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    
-    return [self.courses count];
-}
-
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    
-    return [self.courses objectAtIndex:row];
-    
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
-    
-    if ([self.user[@"isAvailable"]  isEqual: @NO]) {
-        
-        NSInteger index = [self.chooseClass selectedRowInComponent:0];
-        self.chosenCourse = [self.courses objectAtIndex:index];
-        
-        // get the tutors from the query
-        // if they tutor the course and are available for tutoring
-        PFQuery *query = [PFUser query];
-        [query whereKey:@"coursesTutoring" equalTo:self.chosenCourse];
-        [query whereKey:@"isAvailable" equalTo:@YES];
-        
-        [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-            
-            self.tutors = [NSMutableArray new];
-            [self.tutors addObjectsFromArray:results];
-            [self.availableTutors reloadData];
-        }];
-        
-        return;
-    }
-        
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:@"Error"
-                              message:[NSString stringWithFormat: @"\nYou can't tutor and be tutored at the same time."]
-                              delegate:nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil];
-        [alert show];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+// Customize the number of rows in the table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Make sure your segue name in storyboard is the same as this line
-    if ([[segue identifier] isEqualToString:@"showTutorSegue"])
+    // For the number of rows of the section with index 1 (our test section) there
+    // are two cases.
+    //
+    // First case: If the isShowingList variable is set to NO, then no list
+    // with values should be displayed (the values of the demoData array) and
+    // it should exist only one row.
+    //
+    // Second case: If the isShowingList variable is set to YES, then the
+    // demoData array values should be displayed as a list and the returned
+    // number of rows should match the number of the items in the array.
+    if (!self.isShowingList)
     {
-        //if you need to pass data to the next controller do it here
-        ProfileViewController * userProfileViewController = segue.destinationViewController;
-        NSInteger indexForTutor = [self.availableTutors indexPathForSelectedRow].row;
-        PFUser * selectedTutor = [self.tutors objectAtIndex:indexForTutor];
-        
-        userProfileViewController.user = selectedTutor;
-        userProfileViewController.editButton = nil; // No edit button
+        return 1;
+    }
+    else
+    {
+        return [self.coursesArray count];
     }
 }
 
-#pragma mark - Table View Methods
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+// Set the row height.
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"showTutorSegue" sender:self];
+    return 40.0;
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 1;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.tutors.count;
-}
-
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    static NSString *CellIdentifier = @"Cell";
     
-    if (self.tutors.count > 0) {
-        
-        // get the first name of the tutors
-        PFUser * aTutor = [PFUser user];
-        self.nameArray = [NSMutableArray new];
-        self.locationArray = [NSMutableArray new];
-        self.timeArray= [NSMutableArray new];
-        //self.ratingArray = [NSMutableArray new];
-        for (int i = 0; i < self.tutors.count; i++) {
-            
-            aTutor = self.tutors[i];
-            self.nameArray[i] = aTutor[@"firstName"];
-            self.locationArray[i] = aTutor[@"location"];
-            self.timeArray[i] = aTutor[@"timeAvailable"];
-            //self.ratingArray[i] = aTutor[@"rating"];
-        }
-        
-        NSString * tutorName = self.nameArray[indexPath.row];
-        NSString * location = self.locationArray[indexPath.row];
-        NSString * time = self.timeArray[indexPath.row];
-        //NSString * rating = [self.ratingArray[indexPath.row];
-        
-        NSString * tutorInfo = [tutorName stringByAppendingString: [@" is at: " stringByAppendingString:location]];
-        tutorInfo = [tutorInfo stringByAppendingString:[@" until: " stringByAppendingString:time]];
-
-        cell.textLabel.text = tutorInfo;
-
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    // Configure the cell
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.accessoryType = UITableViewCellAccessoryNone;
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    return cell;
+    cell.textLabel.font = [UIFont systemFontOfSize:16];
     
+    if (!self.isShowingList)
+    {
+        // Not a list in this case.
+        // We'll only display the item of the demoData array of which array
+        // index matches the selectedValueList.
+        [[cell textLabel] setText:[self.coursesArray objectAtIndex:self.selectedValueIndex]];
+            
+        // We'll also display the disclosure indicator to prompt user to
+        // tap on that cell.
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    else
+    {
+        // Listing the array items.
+        [[cell textLabel] setText:[self.coursesArray objectAtIndex:[indexPath row]]];
+        
+        // We'll display the checkmark next to the already selected value.
+        // That means that we'll apply the checkmark only to the cell
+        // where the [indexPath row] value is equal to selectedValueIndex value.
+        if ([indexPath row] == self.selectedValueIndex)
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // The job we have to do here is pretty easy.
+    // 1. If the isShowingList variable is set to YES, then we save the
+    //     index of the row that the user tapped on (save it to the selectedValueIndex variable),
+    // 2. Change the value of the isShowingList variable.
+    // 3. Reload not the whole table but only the section we're working on.
+    //
+    // Note that only that last two steps are necessary when the isShowingList
+    // variable is set to NO.
+        
+    // Step 1.
+    if (self.isShowingList)
+    {
+        self.selectedValueIndex = (int) [indexPath row];
+    }
+    
+    // Step 2.
+    self.isShowingList = !self.isShowingList;
+    
+    // Step 3. Here I chose to use the fade animation, but you can freely
+    // try all of the provided animation styles and select the one it suits
+    // you the best.
+    if (self.isShowingList)
+    {
+        self.courseSelectionTable.frame = CGRectMake(self.courseSelectionTable.frame.origin.x, self.courseSelectionTable.frame.origin.y, self.courseSelectionTable.frame.size.width, (self.courseSelectionTable.contentSize.height)*[self.coursesArray count]);
+    }
+    else
+    {
+        self.courseSelectionTable.frame = CGRectMake(self.courseSelectionTable.frame.origin.x, self.courseSelectionTable.frame.origin.y, self.courseSelectionTable.frame.size.width, 40.0);
+
+        // Remove any annotations from map view
+        [self removeAllPins];
+        
+        // Query user database for tutors for specific course
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"isAvailable" equalTo:[NSNumber numberWithBool:YES]];
+        [query whereKey:@"coursesTutoring" equalTo:[self.coursesArray objectAtIndex:self.selectedValueIndex]];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error)
+        {
+            self.tutorsOnMap = (NSMutableArray *) results;
+            
+            // Add map annotations for all available tutors
+            for (int i = 0; i < [results count]; i++)
+            {
+                [self addAnnotation:results[i]];
+            }
+        }];
+    }
+    [self.courseSelectionTable reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 /*
@@ -172,22 +233,95 @@
 }
 */
 
-
-
-- (IBAction)requestTutor:(id)sender {
-    
-    NSInteger indexForTutor = [self.availableTutors indexPathForSelectedRow].row;
-    PFUser * selectedTutor = [self.tutors objectAtIndex:indexForTutor];
-    
-    self.user[@"tutorRequested"] = selectedTutor.username;
-    self.user[@"courseRequested"] = self.chosenCourse;
-        
-    [self.user saveInBackground];
-    
-    // PFUser * someUser = [selectedTutor[@"tutorRequests"] objectAtIndex:0];
-    // NSLog([NSString stringWithFormat:@"%@", someUser[@"firstName"]]);
-    // NSLog(someUser[@"firstName"]);
+// Method to add an annotation
+- (void)addAnnotation:(PFUser *)availableTutor {
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    PFGeoPoint *geoPoint = availableTutor[@"currentLocation"];
+    point.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+    point.title = [NSString stringWithFormat:@"%@ %@", availableTutor[@"firstName"], availableTutor[@"lastName"]];
+    point.subtitle = [NSString stringWithFormat:@"%@",
+                availableTutor[@"location"]];
+    [self.mapView addAnnotation:point];
 }
+
+// View for annotations
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    // If it's the user location, just return nil.
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    // Handle any custom annotations.
+    else
+    {
+        
+        // If an existing pin view was not available, create one.
+        MKPinAnnotationView *pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
+        pinView.animatesDrop = YES;
+        pinView.canShowCallout = YES;
+        
+        // Annotation button initialization
+        UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [rightButton addTarget:self
+                        action:@selector(showTutorProfile:)
+              forControlEvents:UIControlEventTouchUpInside];
+        pinView.rightCalloutAccessoryView = rightButton;
+        
+        return pinView;
+    }
+}
+
+// Method to search tutors array for tutor belonging to annotation
+- (PFUser *)findTutorWithName:(NSString *)fullName
+{
+    PFUser *tutor;
+    for (int i = 0; i < [self.tutorsOnMap count]; i++)
+    {
+        tutor = self.tutorsOnMap[i];
+        NSString *tutorName = [NSString stringWithFormat:@"%@ %@", tutor[@"firstName"], tutor[@"lastName"]];
+        if ([tutorName isEqualToString:fullName])
+        {
+            return tutor;
+        }
+    }
+    
+    return NULL;
+}
+
+// Show tutor segue action
+- (void)showTutorProfile:(id)sender
+{
+    id<MKAnnotation> annotation = [[self.mapView selectedAnnotations] objectAtIndex:0];
+    self.selectedTutor = [self findTutorWithName:annotation.title];
+    [self performSegueWithIdentifier:@"showTutorSegue" sender:self];
+}
+
+// Remove all pins from map view
+- (void)removeAllPins
+{
+    id userLocation = [self.mapView userLocation];
+    NSMutableArray *pins = [[NSMutableArray alloc] initWithArray:[self.mapView annotations]];
+    if (userLocation != nil) {
+        [pins removeObject:userLocation]; // avoid removing user location off the map
+    }
+    
+    [self.mapView removeAnnotations:pins];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"showTutorSegue"])
+    {
+        ProfileViewController * userProfileViewController = segue.destinationViewController;
+        
+        //if you need to pass data to the next controller do it here
+        userProfileViewController.user = self.selectedTutor;
+        userProfileViewController.previousVC = @"Request";
+    }
+}
+
 @end
 
 

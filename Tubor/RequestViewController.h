@@ -8,20 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 #import "ProfileViewController.h"
 
+@interface RequestViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@interface RequestViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIPickerView *chooseClass;
-@property (weak, nonatomic) IBOutlet UITableView *availableTutors;
-@property (strong, atomic) NSMutableArray * courses;
-@property (strong, atomic) NSMutableArray * nameArray;
-// array of users
-@property (strong, atomic) NSMutableArray * tutors;
-@property NSString * chosenCourse;
-@property (strong, atomic) PFUser * user;
-@property (strong, atomic) NSMutableArray * locationArray;
-@property (strong, atomic) NSMutableArray * timeArray;
-//@property (strong, atomic) NSMutableArray * ratingArray;
+@property (strong, atomic) PFUser *user;
+@property (weak, nonatomic) PFUser *selectedTutor;
+@property (strong, atomic) NSMutableArray *tutorsOnMap;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic) CLLocationManager *locationManager;
+
+// Table variables (drop down menu)
+@property (weak, nonatomic) IBOutlet UITableView *courseSelectionTable;
+@property (retain, nonatomic) NSMutableArray *coursesArray;
+@property (nonatomic) int selectedValueIndex;
+@property (nonatomic) bool isShowingList;
+
 @end

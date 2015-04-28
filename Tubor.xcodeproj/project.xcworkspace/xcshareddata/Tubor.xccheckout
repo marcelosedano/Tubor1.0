@@ -10,31 +10,48 @@
 	<string>Tubor</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2B8CAE806C723CB96F8E89B10986D0EBD9520284</key>
-		<string>https://github.com/marcelosedano/Tubor.git</string>
+		<key>13D04689273779D272312679CC092EC459FEB43F</key>
+		<string>https://github.com/marcelosedano/Tubor1.0.git</string>
+		<key>a44436a6-2407-422b-a522-4d6f4e37d8f1++505</key>
+		<string>https://dropdowndemo.googlecode.com/svn/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Tubor/Tubor.xcodeproj</string>
+	<string>Tubor.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2B8CAE806C723CB96F8E89B10986D0EBD9520284</key>
-		<string>../../..</string>
+		<key>13D04689273779D272312679CC092EC459FEB43F</key>
+		<string>../..</string>
+		<key>a44436a6-2407-422b-a522-4d6f4e37d8f1++505</key>
+		<string>../../../Downloads/dropdowndemo</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>a44436a6-2407-422b-a522-4d6f4e37d8f1++505</key>
+		<string>https://dropdowndemo.googlecode.com/svn</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/marcelosedano/Tubor.git</string>
+	<string>https://github.com/marcelosedano/Tubor1.0.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2B8CAE806C723CB96F8E89B10986D0EBD9520284</string>
+	<string>13D04689273779D272312679CC092EC459FEB43F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>a44436a6-2407-422b-a522-4d6f4e37d8f1++505</string>
+			<key>IDESourceControlWCCName</key>
+			<string>dropdowndemo</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2B8CAE806C723CB96F8E89B10986D0EBD9520284</string>
+			<string>13D04689273779D272312679CC092EC459FEB43F</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Tubor</string>
+			<string>Tubor%201.0</string>
 		</dict>
 	</array>
 </dict>
