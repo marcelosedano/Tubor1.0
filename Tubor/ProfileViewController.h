@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 #import "ProfileTableViewCell.h"
 
-@interface ProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
 
 @property (nonatomic) PFUser * user;
 @property (nonatomic) NSString * previousVC;
