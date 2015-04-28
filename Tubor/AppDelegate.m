@@ -6,6 +6,25 @@
 //  Copyright (c) 2015 Marcelo Sedano. All rights reserved.
 //
 
+
+/*
+ Fixes:
+ 
+ 1) User can request a tutoring session and still say that they are available to be tutored. This needs to be fixed so that after a user requests a tutor, they can't say they are available to tutor
+ 
+ 2) Maybe add a "cancel tutoring request" button for user ?
+ 
+ 3) Also, maybe we need to add logic for when a tutor's time is up to immediately become unavailable
+ 
+ 4) Think about how a session is over.
+ 
+ 5) make the tutor's request button gray out after they've been requested
+ 
+ */
+
+
+
+
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 
@@ -37,8 +56,41 @@
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
+    // register the app for remote notifications
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+    
     return YES;
 }
+
+//<------ NEEDED FOR PUSH NOTIFICATIONS --------->
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current Installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    if (error.code == 3010) {
+        NSLog(@"Push notifications are not supported in the iOS Simulator.");
+    } else {
+        // show some alert or otherwise handle the failure to register.
+        NSLog(@"application:didFailToRegisterForRemoteNotificationsWithError: %@", error);
+    }
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
+
+// <--------------------------------------------->
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

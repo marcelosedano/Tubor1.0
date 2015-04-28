@@ -77,6 +77,23 @@
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil];
     [alert show];
+    
+    // When a user taps the "request" button, This will send a push notification to the requested tutor
+    PFQuery *pushQuery = [PFInstallation query];
+    [pushQuery whereKey:@"userName" equalTo:self.user[@"username"]];
+    
+    NSString *firstName = self.user[@"firstName"];
+    NSString *lastName = self.user[@"lastName"];
+    NSString *courseString = self.user[@"courseRequested"];
+    NSString *message = [firstName stringByAppendingString:[lastName stringByAppendingString: [@"will be arriving soon for help with" stringByAppendingString:courseString]]];
+    
+    // what other info do we want? ETA? Topic? 
+    
+    PFPush *push = [[PFPush alloc]init];
+    [push setQuery:pushQuery];
+    [push setMessage:message];
+    [push sendPushInBackground];
+    
 }
 
 // Edit mode
