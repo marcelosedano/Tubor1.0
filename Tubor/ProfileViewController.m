@@ -71,37 +71,13 @@
 
 }
 
--(void)segueToAddCourses
+-(void)segueToEditProfile
 {
-    [self performSegueWithIdentifier:@"addCoursesSegue" sender:self];
+    [self performSegueWithIdentifier:@"editProfileSegue" sender:self];
 }
 
 -(void)requestTutor
 {
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:[NSString stringWithFormat: @"You have requested help from %@", self.user[@"firstName"]]
-                          message:[NSString stringWithFormat: @"\nThey will be expecting you at %@.", self.user[@"location"]]
-                          delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil];
-    [alert show];
-    
-    // When a user taps the "request" button, This will send a push notification to the requested tutor
-    PFQuery *pushQuery = [PFInstallation query];
-    [pushQuery whereKey:@"userName" equalTo:self.user[@"username"]];
-    
-    NSString *firstName = self.user[@"firstName"];
-    NSString *lastName = self.user[@"lastName"];
-    NSString *courseString = self.user[@"courseRequested"];
-    NSString *message = [firstName stringByAppendingString:[lastName stringByAppendingString: [@"will be arriving soon for help with" stringByAppendingString:courseString]]];
-    
-    // what other info do we want? ETA? Topic? 
-    
-    PFPush *push = [[PFPush alloc]init];
-    [push setQuery:pushQuery];
-    [push setMessage:message];
-    [push sendPushInBackground];
-    
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                   initWithTitle:@"Are you sure you want to send a request?"
                                   delegate:self
@@ -115,6 +91,25 @@
 {
     if (buttonIndex == 0) // User select "Yes" from action sheet
     {
+        // When a user taps the "request" button, This will send a push notification to the requested tutor
+        PFQuery *pushQuery = [PFInstallation query];
+        [pushQuery whereKey:@"username" equalTo:self.user[@"username"]];
+        NSLog(@"Current user: %@", [PFUser currentUser].username);
+        NSLog(@"Tutor profile: %@", self.user[@"username"]);
+        
+        PFUser *currentUser = [PFUser currentUser];
+        NSString *firstName = currentUser[@"firstName"];
+        NSString *lastName = currentUser[@"lastName"];
+        //NSString *courseString = self.user[@"courseRequested"];
+        NSString *message = [NSString stringWithFormat:@"%@ %@ will be arriving to your location shortly.", firstName, lastName];
+        
+        // what other info do we want? ETA? Topic?
+        
+        PFPush *push = [[PFPush alloc] init];
+        [push setQuery:pushQuery];
+        [push setMessage:message];
+        [push sendPushInBackground];
+        
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:[NSString stringWithFormat: @"Tutor request sent!"]
                               message:[NSString stringWithFormat: @"\nYou have requested help from %@.  They will be expecting you at %@.", self.user[@"firstName"], self.user[@"location"]]
@@ -123,7 +118,6 @@
                               otherButtonTitles:nil];
         [alert show];
     }
->>>>>>> marcelo-dev
 }
 
 // Edit mode
@@ -135,7 +129,7 @@
         [self.coursesTakingTable setEditing: YES animated: YES];
         
         // Add "+" button on navigation bar
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(segueToAddCourses)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(segueToEditProfile)];
         self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor]; // Color of "+" button
         
         [self.userFullName setEnabled:YES];
@@ -307,7 +301,8 @@
 */
 - (IBAction)logOut:(id)sender {
     
-    //[PFUser logOut];
-    //PFUser * currentUser = [PFUser currentUser];
+    [PFUser logOut];
+    PFUser *currentUser = [PFUser currentUser];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end

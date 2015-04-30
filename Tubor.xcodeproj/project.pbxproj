@@ -24,7 +24,6 @@
 		0E25B82F1AC20D9900B45EFB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E25B82E1AC20D9900B45EFB /* MobileCoreServices.framework */; };
 		0E25B8311AC20D9E00B45EFB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E25B8301AC20D9E00B45EFB /* QuartzCore.framework */; };
 		0E25B8331AC20DA400B45EFB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E25B8321AC20DA400B45EFB /* Security.framework */; };
-		0E25B8351AC20DA900B45EFB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E25B8341AC20DA900B45EFB /* StoreKit.framework */; };
 		0E25B8371AC20DB600B45EFB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E25B8361AC20DB600B45EFB /* SystemConfiguration.framework */; };
 		0E25B8391AC20DC300B45EFB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E25B8381AC20DC300B45EFB /* libz.dylib */; };
 		0E25B83B1AC20DCC00B45EFB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E25B83A1AC20DCC00B45EFB /* libsqlite3.dylib */; };
@@ -42,13 +41,13 @@
 		0E4C6E781AEC365A00B6DFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C6E771AEC365A00B6DFBB /* Main.storyboard */; };
 		0E4D33DC1ACD08C4001C5416 /* CustomProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E4D33DB1ACD08C4001C5416 /* CustomProfileCell.xib */; };
 		0E4D33DF1ACD0996001C5416 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D33DE1ACD0996001C5416 /* ProfileTableViewCell.m */; };
-		0E4D33E21ACD0BC7001C5416 /* AddCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D33E11ACD0BC7001C5416 /* AddCourseViewController.m */; };
 		0E4D33E81ACD2DA5001C5416 /* studentImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4D33E71ACD2DA5001C5416 /* studentImage.png */; };
 		0E4D33EA1ACDB884001C5416 /* profileTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4D33E91ACDB884001C5416 /* profileTabIcon.png */; };
 		0E4DF8911AEF717E0067312E /* tappicon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4DF88F1AEF717E0067312E /* tappicon2x.png */; };
 		0E4DF8921AEF717E0067312E /* tappicon3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4DF8901AEF717E0067312E /* tappicon3x.png */; };
 		0E4DF8941AEF73050067312E /* tNavTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4DF8931AEF73050067312E /* tNavTitle.png */; };
 		0E4F91361AC70CA40014209A /* TuborRegistrationBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4F91351AC70CA40014209A /* TuborRegistrationBackground.png */; };
+		0ECA1F4F1AF02987007E3DA1 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA1F4E1AF02987007E3DA1 /* EditProfileViewController.m */; };
 		0EE2B8C91AC5D0D400D4B000 /* defaultUserPic_small.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0EE2B8C81AC5D0D400D4B000 /* defaultUserPic_small.jpeg */; };
 		0EE2B8CB1AC5E13C00D4B000 /* TuborLoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE2B8CA1AC5E13C00D4B000 /* TuborLoginBackground.png */; };
 		0EE2B8CE1AC5E7CA00D4B000 /* TuborBlueButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2B8CD1AC5E7CA00D4B000 /* TuborBlueButton.m */; };
@@ -87,7 +86,6 @@
 		0E25B82E1AC20D9900B45EFB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0E25B8301AC20D9E00B45EFB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0E25B8321AC20DA400B45EFB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		0E25B8341AC20DA900B45EFB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0E25B8361AC20DB600B45EFB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0E25B8381AC20DC300B45EFB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0E25B83A1AC20DCC00B45EFB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -111,14 +109,14 @@
 		0E4D33DB1ACD08C4001C5416 /* CustomProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomProfileCell.xib; sourceTree = "<group>"; };
 		0E4D33DD1ACD0996001C5416 /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		0E4D33DE1ACD0996001C5416 /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
-		0E4D33E01ACD0BC7001C5416 /* AddCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseViewController.h; sourceTree = "<group>"; };
-		0E4D33E11ACD0BC7001C5416 /* AddCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCourseViewController.m; sourceTree = "<group>"; };
 		0E4D33E71ACD2DA5001C5416 /* studentImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = studentImage.png; sourceTree = "<group>"; };
 		0E4D33E91ACDB884001C5416 /* profileTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileTabIcon.png; sourceTree = "<group>"; };
 		0E4DF88F1AEF717E0067312E /* tappicon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tappicon2x.png; sourceTree = "<group>"; };
 		0E4DF8901AEF717E0067312E /* tappicon3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tappicon3x.png; sourceTree = "<group>"; };
 		0E4DF8931AEF73050067312E /* tNavTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tNavTitle.png; sourceTree = "<group>"; };
 		0E4F91351AC70CA40014209A /* TuborRegistrationBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TuborRegistrationBackground.png; sourceTree = "<group>"; };
+		0ECA1F4D1AF02987007E3DA1 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditProfileViewController.h; path = ../EditProfileViewController.h; sourceTree = "<group>"; };
+		0ECA1F4E1AF02987007E3DA1 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditProfileViewController.m; path = ../EditProfileViewController.m; sourceTree = "<group>"; };
 		0EE2B8C81AC5D0D400D4B000 /* defaultUserPic_small.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultUserPic_small.jpeg; sourceTree = "<group>"; };
 		0EE2B8CA1AC5E13C00D4B000 /* TuborLoginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TuborLoginBackground.png; sourceTree = "<group>"; };
 		0EE2B8CC1AC5E7CA00D4B000 /* TuborBlueButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TuborBlueButton.h; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				0E25B83B1AC20DCC00B45EFB /* libsqlite3.dylib in Frameworks */,
 				0E25B8391AC20DC300B45EFB /* libz.dylib in Frameworks */,
 				0E25B8371AC20DB600B45EFB /* SystemConfiguration.framework in Frameworks */,
-				0E25B8351AC20DA900B45EFB /* StoreKit.framework in Frameworks */,
 				0E25B8331AC20DA400B45EFB /* Security.framework in Frameworks */,
 				0E25B8311AC20D9E00B45EFB /* QuartzCore.framework in Frameworks */,
 				0E25B82F1AC20D9900B45EFB /* MobileCoreServices.framework in Frameworks */,
@@ -167,10 +164,10 @@
 				0E25B8081AC2054D00B45EFB /* LoginViewController.m */,
 				0E25B80E1AC207FD00B45EFB /* ProfileViewController.h */,
 				0E25B80F1AC207FD00B45EFB /* ProfileViewController.m */,
+				0ECA1F4D1AF02987007E3DA1 /* EditProfileViewController.h */,
+				0ECA1F4E1AF02987007E3DA1 /* EditProfileViewController.m */,
 				0E25B80B1AC2067600B45EFB /* RegistrationViewController.h */,
 				0E25B80C1AC2067600B45EFB /* RegistrationViewController.m */,
-				0E4D33E01ACD0BC7001C5416 /* AddCourseViewController.h */,
-				0E4D33E11ACD0BC7001C5416 /* AddCourseViewController.m */,
 				0E150C011ACE226600A3A31D /* RequestViewController.h */,
 				0E150C021ACE226600A3A31D /* RequestViewController.m */,
 				0E150C041ACE227500A3A31D /* TutorViewController.h */,
@@ -185,7 +182,6 @@
 				0E25B83A1AC20DCC00B45EFB /* libsqlite3.dylib */,
 				0E25B8381AC20DC300B45EFB /* libz.dylib */,
 				0E25B8361AC20DB600B45EFB /* SystemConfiguration.framework */,
-				0E25B8341AC20DA900B45EFB /* StoreKit.framework */,
 				0E25B8321AC20DA400B45EFB /* Security.framework */,
 				0E25B8301AC20D9E00B45EFB /* QuartzCore.framework */,
 				0E25B82E1AC20D9900B45EFB /* MobileCoreServices.framework */,
@@ -338,6 +334,11 @@
 					0E4A13161ABDF20600C20D71 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = BWSLUFSJRA;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					0E4A132F1ABDF20600C20D71 = {
 						CreatedOnToolsVersion = 6.2;
@@ -405,9 +406,9 @@
 			files = (
 				0E25B8091AC2054D00B45EFB /* LoginViewController.m in Sources */,
 				0E25B80D1AC2067600B45EFB /* RegistrationViewController.m in Sources */,
+				0ECA1F4F1AF02987007E3DA1 /* EditProfileViewController.m in Sources */,
 				0EE2B8CE1AC5E7CA00D4B000 /* TuborBlueButton.m in Sources */,
 				0E4A13201ABDF20600C20D71 /* AppDelegate.m in Sources */,
-				0E4D33E21ACD0BC7001C5416 /* AddCourseViewController.m in Sources */,
 				0E150C031ACE226600A3A31D /* RequestViewController.m in Sources */,
 				0E4D33DF1ACD0996001C5416 /* ProfileTableViewCell.m in Sources */,
 				0E25B8101AC207FD00B45EFB /* ProfileViewController.m in Sources */,
@@ -463,6 +464,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Marcelo Sedano (YBRUC8KCBU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -504,6 +506,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Marcelo Sedano (YBRUC8KCBU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;

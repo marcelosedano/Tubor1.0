@@ -107,6 +107,9 @@
         if (user)
         {
             [self performSegueWithIdentifier:@"loginToProfileSegue" sender:self];
+            PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+            currentInstallation[@"username"] = [PFUser currentUser].username;
+            [[PFUser currentUser] saveInBackground];
         }
         else
         {
