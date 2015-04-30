@@ -6,25 +6,6 @@
 //  Copyright (c) 2015 Marcelo Sedano. All rights reserved.
 //
 
-
-/*
- Fixes:
- 
- 1) User can request a tutoring session and still say that they are available to be tutored. This needs to be fixed so that after a user requests a tutor, they can't say they are available to tutor
- 
- 2) Maybe add a "cancel tutoring request" button for user ?
- 
- 3) Also, maybe we need to add logic for when a tutor's time is up to immediately become unavailable
- 
- 4) Think about how a session is over.
- 
- 5) make the tutor's request button gray out after they've been requested
- 
- */
-
-
-
-
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 

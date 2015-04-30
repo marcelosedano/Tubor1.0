@@ -32,10 +32,26 @@
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
     
+    
+    if ([self.user[@"studentAvailable"] isEqual: @NO])
+    {
+        [self.availability setOn:NO];
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"You've Requested a Tutoring Session"
+                              message:[NSString stringWithFormat: @"\nIf you would like to be available to tutor, please cancel your tutoring request."]
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        // set the switch back to NO
+        [self.availability setOn:NO animated:YES];
+        [alert show];
+
+    }
+   
     if ([self.user[@"isAvailable"]  isEqual: @NO]) {
         [self.availability setOn:NO];
     }
-    if ([self.user[@"isAvailable"] isEqual:@YES]) {
+    else if ([self.user[@"isAvailable"] isEqual:@YES] && [self.user[@"studentAvailable"] isEqual:@YES]) {
         [self.availability setOn:YES];
         self.tableTimer = [NSTimer scheduledTimerWithTimeInterval:5
                                                            target:self selector:@selector(refreshTable)
@@ -94,6 +110,21 @@
     // if isAvailable = true, set the user's location and time there
     // if false, set the location and time there to null
 
+    if ([self.user[@"studentAvailable"] isEqual: @NO]) {
+        [self.availability setOn:NO];
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"You've Requested a Tutoring Session"
+                              message:[NSString stringWithFormat: @"\nIf you would like to be available to tutor, please cancel your tutoring request."]
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        // set the switch back to NO
+        [self.availability setOn:NO animated:YES];
+        [alert show];
+        return;
+    }
+    
+    
     if (self.availability.isOn)
     {
         
@@ -137,12 +168,16 @@
         }
         // cast the bool as an NSNumber to pass in as an object to the isAvailable parameter
         
+        
         // turn off date picker
         [self.timePicker setUserInteractionEnabled:NO];
         self.user[@"isAvailable"] = @YES;
         self.user[@"timeAvailable"] = timeAvailable;
         self.user[@"location"] = location;
         self.locationText.text = self.user[@"location"];
+        
+        // new
+        //self.user[@"studentAvailable"] = @NO;
         
         [self.user saveInBackground];
         self.locationText.text = self.user[@"location"];
@@ -164,6 +199,8 @@
     self.user[@"location"] = @"";
     self.user[@"pupil"] = null;
     
+    //new
+    //self.user[@"studentAvailable"] = @YES;
          
     [self.user saveInBackground];
     

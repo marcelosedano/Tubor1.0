@@ -10,9 +10,10 @@
 #import <Parse/Parse.h>
 #import "ProfileTableViewCell.h"
 
-@interface ProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
+@interface ProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIAlertViewDelegate>
 
 @property (nonatomic) PFUser * user;
 @property (nonatomic) NSString * previousVC;
-
+- (IBAction)cancelSession:(id)sender;
+@property BOOL rateBool;
 @end

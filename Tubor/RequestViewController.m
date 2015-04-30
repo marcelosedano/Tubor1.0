@@ -180,6 +180,34 @@ PFUser *selectedTutor;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    // If the user is unavailble...
+    
+    PFUser *currentUser = [PFUser currentUser];
+    
+    if ([currentUser[@"isAvailable"] isEqual: @YES]) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:[NSString stringWithFormat: @"You're Tutoring Right Now"]
+                              message:[NSString stringWithFormat: @"You can't tutor and be tutored at the same time :)"]
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+        return;
+
+    }
+    
+    if ([currentUser[@"studentAvailable"] isEqual: @NO]) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:[NSString stringWithFormat: @"You've already requested a tutoring session"]
+                              message:[NSString stringWithFormat: @"Please cancel your current session from your profile to request another "]
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     // The job we have to do here is pretty easy.
     // 1. If the isShowingList variable is set to YES, then we save the
     //     index of the row that the user tapped on (save it to the selectedValueIndex variable),

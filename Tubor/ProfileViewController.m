@@ -91,6 +91,7 @@
 {
     if (buttonIndex == 0) // User select "Yes" from action sheet
     {
+
         // When a user taps the "request" button, This will send a push notification to the requested tutor
         PFQuery *pushQuery = [PFInstallation query];
         [pushQuery whereKey:@"username" equalTo:self.user[@"username"]];
@@ -98,6 +99,12 @@
         NSLog(@"Tutor profile: %@", self.user[@"username"]);
         
         PFUser *currentUser = [PFUser currentUser];
+
+        // set the user's courseRequested to "true" so they can't say they're available to tutor.
+        currentUser[@"studentAvailable"] = @NO;
+        [currentUser saveInBackground];
+        
+        
         NSString *firstName = currentUser[@"firstName"];
         NSString *lastName = currentUser[@"lastName"];
         //NSString *courseString = self.user[@"courseRequested"];
@@ -301,8 +308,207 @@
 */
 - (IBAction)logOut:(id)sender {
     
-    [PFUser logOut];
     PFUser *currentUser = [PFUser currentUser];
+    
+    // make the user logging out available to request/tutor, eg reset to default
+    currentUser[@"isAvailable"] = @NO;
+    currentUser[@"studentAvailable"] = @YES;
+    [PFUser logOut];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+// cancels a user's tutoring session
+- (IBAction)cancelSession:(id)sender {
+    
+    PFUser *currentUser = [PFUser currentUser];
+    
+    if ([currentUser[@"studentAvailable"] isEqual: @NO]) {
+        currentUser[@"studentAvailable"] = @YES;
+        
+        [currentUser saveInBackground];
+        
+        self.rateBool = NO;
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:[NSString stringWithFormat: @"Tutoring session now over."]
+                              message:[NSString stringWithFormat: @"\nYou can now request another tutor or make yourself available to tutor."]
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:@"Rate Tutor", nil];
+        [alert show];
+    }
+}
+
+
+// this function allows a user to give a tutor a rating
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == 1) {
+        
+        if (self.rateBool == NO) {
+            
+            self.rateBool = YES;
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:[NSString stringWithFormat: @"Rating"]
+                                  message:[NSString stringWithFormat: @"\nRate your tutor."]
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  otherButtonTitles:@"1",@"2",@"3",@"4",@"5", nil];
+            [alert show];
+            return;
+        }
+        
+        // run a query on the ratings objects based on the tutor's userName
+        PFQuery *tutorQuery = [PFQuery queryWithClassName:@"Rating"];
+        [tutorQuery whereKey:@"userName" equalTo:self.user[@"username"]];
+        [tutorQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!object) {
+                NSLog(@"The getFirstObject request failed.");
+            } else {
+                // The find succeeded.
+                NSLog(@"Successfully retrieved the object.");
+                
+                // calculate new rating for tutor
+                
+                NSNumber *ratingTotal = object[@"ratingTotal"];
+                NSNumber *count = object[@"ratingCount"];
+                NSNumber *newRating = [[NSNumber alloc]init];
+                
+                count = [NSNumber numberWithDouble:([count doubleValue] + 1)];
+                ratingTotal = [NSNumber numberWithDouble:([ratingTotal doubleValue] + 1)];
+                
+                newRating = [NSNumber numberWithDouble: [ratingTotal doubleValue] / [count doubleValue]];
+                object[@"ratingTotal"] = ratingTotal;
+                object[@"rating"] = newRating;
+                object[@"ratingCount"] = count;
+
+                [object saveInBackground];
+            }
+        }];
+    }
+    if (buttonIndex == 2) {
+        // run a query on the ratings objects based on the tutor's userName
+        PFQuery *tutorQuery = [PFQuery queryWithClassName:@"Rating"];
+        [tutorQuery whereKey:@"userName" equalTo:self.user[@"username"]];
+        [tutorQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!object) {
+                NSLog(@"The getFirstObject request failed.");
+            } else {
+                // The find succeeded.
+                NSLog(@"Successfully retrieved the object.");
+                
+                // calculate new rating for tutor
+                
+                NSNumber *ratingTotal = object[@"ratingTotal"];
+                NSNumber *count = object[@"ratingCount"];
+                NSNumber *newRating = [[NSNumber alloc]init];
+                
+                count = [NSNumber numberWithDouble:([count doubleValue] + 1)];
+                ratingTotal = [NSNumber numberWithDouble:([ratingTotal doubleValue] + 2)];
+                
+                newRating = [NSNumber numberWithDouble: [ratingTotal doubleValue] / [count doubleValue]];
+                object[@"ratingTotal"] = ratingTotal;
+                object[@"rating"] = newRating;
+                object[@"ratingCount"] = count;
+                
+                [object saveInBackground];
+            }
+        }];
+    }
+    if (buttonIndex == 3) {
+        // run a query on the ratings objects based on the tutor's userName
+        PFQuery *tutorQuery = [PFQuery queryWithClassName:@"Rating"];
+        [tutorQuery whereKey:@"userName" equalTo:self.user[@"username"]];
+        [tutorQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!object) {
+                NSLog(@"The getFirstObject request failed.");
+            } else {
+                // The find succeeded.
+                NSLog(@"Successfully retrieved the object.");
+                
+                // calculate new rating for tutor
+                
+                NSNumber *ratingTotal = object[@"ratingTotal"];
+                NSNumber *count = object[@"ratingCount"];
+                NSNumber *newRating = [[NSNumber alloc]init];
+                
+                count = [NSNumber numberWithDouble:([count doubleValue] + 1)];
+                ratingTotal = [NSNumber numberWithDouble:([ratingTotal doubleValue] + 3)];
+                
+                newRating = [NSNumber numberWithDouble: [ratingTotal doubleValue] / [count doubleValue]];
+                object[@"ratingTotal"] = ratingTotal;
+                object[@"rating"] = newRating;
+                object[@"ratingCount"] = count;
+                
+                [object saveInBackground];
+            }
+        }];
+    }
+    if (buttonIndex == 4) {
+        // run a query on the ratings objects based on the tutor's userName
+        PFQuery *tutorQuery = [PFQuery queryWithClassName:@"Rating"];
+        [tutorQuery whereKey:@"userName" equalTo:self.user[@"username"]];
+        [tutorQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!object) {
+                NSLog(@"The getFirstObject request failed.");
+            } else {
+                // The find succeeded.
+                NSLog(@"Successfully retrieved the object.");
+                
+                // calculate new rating for tutor
+                
+                NSNumber *ratingTotal = object[@"ratingTotal"];
+                NSNumber *count = object[@"ratingCount"];
+                NSNumber *newRating = [[NSNumber alloc]init];
+                
+                count = [NSNumber numberWithDouble:([count doubleValue] + 1)];
+                ratingTotal = [NSNumber numberWithDouble:([ratingTotal doubleValue] + 4)];
+                
+                newRating = [NSNumber numberWithDouble: [ratingTotal doubleValue] / [count doubleValue]];
+                object[@"ratingTotal"] = ratingTotal;
+                object[@"rating"] = newRating;
+                object[@"ratingCount"] = count;
+                
+                [object saveInBackground];
+            }
+        }];
+    }
+    if (buttonIndex == 5) {
+        // run a query on the ratings objects based on the tutor's userName
+        PFQuery *tutorQuery = [PFQuery queryWithClassName:@"Rating"];
+        [tutorQuery whereKey:@"userName" equalTo:self.user[@"username"]];
+        [tutorQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!object) {
+                NSLog(@"The getFirstObject request failed.");
+            } else {
+                // The find succeeded.
+                NSLog(@"Successfully retrieved the object.");
+                
+                // calculate new rating for tutor
+                
+                NSNumber *ratingTotal = object[@"ratingTotal"];
+                NSNumber *count = object[@"ratingCount"];
+                NSNumber *newRating = [[NSNumber alloc]init];
+                
+                count = [NSNumber numberWithDouble:([count doubleValue] + 1)];
+                ratingTotal = [NSNumber numberWithDouble:([ratingTotal doubleValue] + 5)];
+                
+                newRating = [NSNumber numberWithDouble: [ratingTotal doubleValue] / [count doubleValue]];
+                object[@"ratingTotal"] = ratingTotal;
+                object[@"rating"] = newRating;
+                object[@"ratingCount"] = count;
+                
+                [object saveInBackground];
+            }
+        }];
+    }
+}
 @end
+
+
+
+
+
+
+
+
